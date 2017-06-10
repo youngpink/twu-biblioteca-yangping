@@ -1,8 +1,31 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Tools;
+
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        System.out.println("Hello, world!");
+
+        Tools tool = new Tools();
+
+        tool.sayWelcome();
+        tool.mainMenu();
+
+        int choose = tool.getChoose();
+        while(choose !=4){
+            switch(choose) {
+                case 1:
+                    System.out.println(choose);
+                    break;
+                case 2:
+                    System.out.println(choose);
+                    break;
+                case 3:
+                    System.out.println(choose);
+                    break;
+            }
+            choose = tool.getChoose();
+        }
+        System.exit(0);
     }
 }

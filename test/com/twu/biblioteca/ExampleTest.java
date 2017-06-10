@@ -2,14 +2,18 @@ package com.twu.biblioteca;
 
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import com.twu.biblioteca.Tools;
 
+import static org.junit.Assert.assertEquals;
 
 
 public class ExampleTest {
 
-    @Test
-    public void test() {
-        assertEquals(1, 1);
-    }
+    Tools tool = new Tools();
+
+//    @Test
+//    public void testGetInputFirst() {
+//        assertEquals(1, tool.getInput("1"));
+//    }
+
 }
