@@ -7,6 +7,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         Tools tool = new Tools();
+        Books book = new Books();
 
         tool.sayWelcome();
         tool.mainMenu();
@@ -15,7 +16,7 @@ public class BibliotecaApp {
         while(choose !=4){
             switch(choose) {
                 case 1:
-                    System.out.println(choose);
+                    System.out.println(book.listBook());
                     break;
                 case 2:
                     System.out.println(choose);
