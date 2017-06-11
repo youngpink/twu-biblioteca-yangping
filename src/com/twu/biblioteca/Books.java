@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Books {
 
     static ArrayList<String> booksName = new ArrayList<String>();
-    static ArrayList<String> booksAuthre = new ArrayList<String>();
+    static ArrayList<String> booksAuthor = new ArrayList<String>();
     static ArrayList<String> booksYear = new ArrayList<String>();
 
     public Books() {
@@ -17,10 +17,10 @@ public class Books {
         booksName.add("英语");
         booksName.add("物理");
 
-        booksAuthre.add("张三");
-        booksAuthre.add("李四");
-        booksAuthre.add("王五");
-        booksAuthre.add("赵六");
+        booksAuthor.add("张三");
+        booksAuthor.add("李四");
+        booksAuthor.add("王五");
+        booksAuthor.add("赵六");
 
         booksYear.add("1990");
         booksYear.add("1966");
@@ -32,9 +32,24 @@ public class Books {
     static String listBook(){
         String listString = "";
         for (int i = 0; i < booksName.size(); i++) {
-            listString += booksName.get(i) + "\t" + booksAuthre.get(i) + "\t" + booksYear.get(i) + "\n";
+            listString += booksName.get(i) + "\t" + booksAuthor.get(i) + "\t" + booksYear.get(i) + "\n";
         }
 
         return listString;
+    }
+
+    static boolean checkOutBook(String bookName){
+
+        int index = booksName.indexOf(bookName);
+
+        if(index == -1){
+            return false;
+        }
+
+        booksName.remove(index);
+        booksAuthor.remove(index);
+        booksYear.remove(index);
+
+        return true;
     }
 }

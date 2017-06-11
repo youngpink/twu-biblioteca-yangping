@@ -2,6 +2,8 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.Tools;
 
+import java.util.Scanner;
+
 public class BibliotecaApp {
 
     public static void main(String[] args) {
@@ -19,7 +21,7 @@ public class BibliotecaApp {
                     System.out.println(book.listBook());
                     break;
                 case 2:
-                    System.out.println(choose);
+                    System.out.println(tool.checkOut(book));
                     break;
                 case 3:
                     System.out.println(choose);

@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.Scanner;
+import com.twu.biblioteca.Books;
 
 /**
  * Created by Administrator on 2017/6/10.
@@ -28,5 +29,12 @@ public class Tools {
             choose = in.nextInt();
         }
         return choose;
+    }
+
+    static String checkOut(Books book){
+        System.out.println("please input book name:");
+        Scanner in = new Scanner(System.in);
+        String bookname = in.nextLine();
+        return book.checkOutBook(bookname) ? "Thank you! Enjoy the book" : "That book is not available";
     }
 }
