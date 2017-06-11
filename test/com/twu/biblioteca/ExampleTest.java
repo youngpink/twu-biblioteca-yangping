@@ -30,12 +30,14 @@ public class ExampleTest {
         assertEquals(true, book.checkOutBook("物理"));
     }
 
-//    public void testCheckOutFirst() {
-//        assertEquals("That book is not available",tool.checkOut(book));
-//    }
-//
-//    public void testCheckOutScond() {
-//        assertEquals("Thank you! Enjoy the book", tool.checkOut(book));
-//    }
+    public void testReturnBookFirst() {
+        assertEquals(true, book.returnBook("化学","马七", "2002"));
+    }
+
+    public void testReturnBookScond() {
+        assertEquals(false, book.returnBook("物理", "赵六", "2001"));
+    }
+
+
 
 }

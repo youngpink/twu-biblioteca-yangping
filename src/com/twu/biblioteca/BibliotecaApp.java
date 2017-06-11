@@ -12,8 +12,8 @@ public class BibliotecaApp {
         Books book = new Books();
 
         tool.sayWelcome();
-        tool.mainMenu();
 
+        tool.mainMenu();
         int choose = tool.getChoose();
         while(choose !=4){
             switch(choose) {
@@ -24,9 +24,10 @@ public class BibliotecaApp {
                     System.out.println(tool.checkOut(book));
                     break;
                 case 3:
-                    System.out.println(choose);
+                    System.out.println(tool.checkIn(book));
                     break;
             }
+            tool.mainMenu();
             choose = tool.getChoose();
         }
         System.exit(0);

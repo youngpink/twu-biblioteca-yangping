@@ -52,4 +52,19 @@ public class Books {
 
         return true;
     }
+
+    static boolean returnBook(String bookName, String bookAuthor,String bookYear){
+
+        int index = booksName.indexOf(bookName);
+
+        if(index != -1){
+            return false;
+        }
+
+        booksName.add(bookName);
+        booksAuthor.add(bookAuthor);
+        booksYear.add(bookYear);
+
+        return true;
+    }
 }

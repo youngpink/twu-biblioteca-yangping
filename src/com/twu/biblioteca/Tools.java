@@ -37,4 +37,18 @@ public class Tools {
         String bookname = in.nextLine();
         return book.checkOutBook(bookname) ? "Thank you! Enjoy the book" : "That book is not available";
     }
+
+    static String checkIn(Books book){
+        System.out.println("please input book name:");
+        Scanner in = new Scanner(System.in);
+        String bookname = in.nextLine();
+
+        System.out.println("please input book author:");
+        String bookauthor = in.nextLine();
+
+        System.out.println("please input book year:");
+        String bookyear = in.nextLine();
+
+        return book.returnBook(bookname, bookauthor, bookyear) ? "Thank you for returning the book" : "That is not a valid book to return";
+    }
 }
