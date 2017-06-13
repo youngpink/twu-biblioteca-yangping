@@ -5,66 +5,66 @@ import java.util.ArrayList;
  * Created by Administrator on 2017/6/10.
  */
 
-public class Books {
-
-    static ArrayList<String> booksName = new ArrayList<String>();
-    static ArrayList<String> booksAuthor = new ArrayList<String>();
-    static ArrayList<String> booksYear = new ArrayList<String>();
+public class Books extends Goods{
 
     public Books() {
-        booksName.add("语文");
-        booksName.add("数学");
-        booksName.add("英语");
-        booksName.add("物理");
+        this.name.add("语文");
+        this.name.add("数学");
+        this.name.add("英语");
+        this.name.add("物理");
 
-        booksAuthor.add("张三");
-        booksAuthor.add("李四");
-        booksAuthor.add("王五");
-        booksAuthor.add("赵六");
+        this.author.add("张三");
+        this.author.add("李四");
+        this.author.add("王五");
+        this.author.add("赵六");
 
-        booksYear.add("1990");
-        booksYear.add("1966");
-        booksYear.add("1998");
-        booksYear.add("2001");
+        this.year.add("1990");
+        this.year.add("1966");
+        this.year.add("1998");
+        this.year.add("2001");
 
     }
 
-    static String listBook(){
+    protected Books(int x){
+
+    }
+
+    String list(){
         String listString = "";
-        for (int i = 0; i < booksName.size(); i++) {
-            listString += booksName.get(i) + "\t" + booksAuthor.get(i) + "\t" + booksYear.get(i) + "\n";
+        for (int i = 0; i < this.name.size(); i++) {
+            listString += this.name.get(i) + "\t" + this.author.get(i) + "\t" + this.year.get(i) + "\n";
         }
 
         return listString;
     }
 
-    static boolean checkOutBook(String bookName){
+    String checkOut(String bookName){
 
-        int index = booksName.indexOf(bookName);
+        int index = this.name.indexOf(bookName);
 
         if(index == -1){
-            return false;
+            return "That book is not available";
         }
 
-        booksName.remove(index);
-        booksAuthor.remove(index);
-        booksYear.remove(index);
+        this.name.remove(index);
+        this.author.remove(index);
+        this.year.remove(index);
 
-        return true;
+        return "Thank you! Enjoy the book";
     }
 
-    static boolean returnBook(String bookName, String bookAuthor,String bookYear){
+    String returnBook(String bookName, String bookAuthor,String bookYear){
 
-        int index = booksName.indexOf(bookName);
+        int index = this.name.indexOf(bookName);
 
         if(index != -1){
-            return false;
+            return "That is not a valid book to return";
         }
 
-        booksName.add(bookName);
-        booksAuthor.add(bookAuthor);
-        booksYear.add(bookYear);
+        this.name.add(bookName);
+        this.author.add(bookAuthor);
+        this.year.add(bookYear);
 
-        return true;
+        return "Thank you for returning the book";
     }
 }

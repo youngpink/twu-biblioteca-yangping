@@ -16,26 +16,28 @@ public class Tools {
         System.out.println("1：List Books\n" +
                 "2：Check out a book\n" +
                 "3：Return a book\n" +
-                "4：Quit\n" +
-                "请输入1-4：");
+                "4：List Movies\n" +
+                "5：Check out a movie\n" +
+                "6：Quit\n" +
+                "请输入1-6：");
     }
 
     static int getChoose(){
         String inputErrorAlert = "Select a valid option!";
         Scanner in = new Scanner(System.in);
         int choose = in.nextInt();
-        while(choose < 1 || choose > 4){
+        while(choose < 1 || choose > 6){
             System.out.println(inputErrorAlert);
             choose = in.nextInt();
         }
         return choose;
     }
 
-    static String checkOut(Books book){
-        System.out.println("please input book name:");
+    static String checkOut(Goods good){
+        System.out.println("please input the name:");
         Scanner in = new Scanner(System.in);
-        String bookname = in.nextLine();
-        return book.checkOutBook(bookname) ? "Thank you! Enjoy the book" : "That book is not available";
+        String name = in.nextLine();
+        return good.checkOut(name);
     }
 
     static String checkIn(Books book){
@@ -49,6 +51,6 @@ public class Tools {
         System.out.println("please input book year:");
         String bookyear = in.nextLine();
 
-        return book.returnBook(bookname, bookauthor, bookyear) ? "Thank you for returning the book" : "That is not a valid book to return";
+        return book.returnBook(bookname, bookauthor, bookyear);
     }
 }

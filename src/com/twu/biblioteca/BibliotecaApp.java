@@ -1,30 +1,33 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.Tools;
-
-import java.util.Scanner;
-
 public class BibliotecaApp {
 
     public static void main(String[] args) {
 
         Tools tool = new Tools();
-        Books book = new Books();
+        Goods book = new Books();
+        Goods movie = new Movies();
 
         tool.sayWelcome();
 
         tool.mainMenu();
         int choose = tool.getChoose();
-        while(choose !=4){
+        while(choose !=6){
             switch(choose) {
                 case 1:
-                    System.out.println(book.listBook());
+                    System.out.println(book.list());
                     break;
                 case 2:
                     System.out.println(tool.checkOut(book));
                     break;
                 case 3:
-                    System.out.println(tool.checkIn(book));
+                    System.out.println(tool.checkIn((Books) book));
+                    break;
+                case 4:
+                    System.out.println(movie.list());
+                    break;
+                case 5:
+                    System.out.println(tool.checkOut(movie));
                     break;
             }
             tool.mainMenu();
