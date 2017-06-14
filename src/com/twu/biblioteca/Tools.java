@@ -18,8 +18,9 @@ public class Tools {
                 "3：Return a book\n" +
                 "4：List Movies\n" +
                 "5：Check out a movie\n" +
-                "6：Quit\n" +
-                "请输入1-6：");
+                "6：List Checked out books\n" +
+                "7：Quit\n" +
+                "请输入1-7：");
     }
 
     static int getChoose(){
@@ -33,11 +34,20 @@ public class Tools {
         return choose;
     }
 
-    static String checkOut(Goods good){
+    static boolean login(Accounts user){
+        System.out.println("please input your username:");
+        Scanner in = new Scanner(System.in);
+        String username = in.nextLine();
+        System.out.println("please input your password:");
+        String password = in.nextLine();
+        return user.login(username, password);
+    }
+
+    static String checkOut(Goods good, String username){
         System.out.println("please input the name:");
         Scanner in = new Scanner(System.in);
         String name = in.nextLine();
-        return good.checkOut(name);
+        return good.checkOut(name, username);
     }
 
     static String checkIn(Books book){

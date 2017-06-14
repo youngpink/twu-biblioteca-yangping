@@ -9,11 +9,12 @@ public abstract class Goods {
     protected ArrayList<String> name = new ArrayList<String>();
     protected ArrayList<String> author = new ArrayList<String>();
     protected ArrayList<String> year = new ArrayList<String>();
+    protected ArrayList<String> lendName = new ArrayList<String>();
 
     public Goods(){}
 
     abstract String list();
 
-    abstract String checkOut(String bookName);
+    abstract String checkOut(String bookName, String username);
 
 }

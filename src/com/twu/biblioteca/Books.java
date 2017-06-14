@@ -23,6 +23,10 @@ public class Books extends Goods{
         this.year.add("1998");
         this.year.add("2001");
 
+        this.lendName.add("");
+        this.lendName.add("");
+        this.lendName.add("");
+        this.lendName.add("");
     }
 
     protected Books(int x){
@@ -53,6 +57,22 @@ public class Books extends Goods{
         return "Thank you! Enjoy the book";
     }
 
+    String checkOut(String bookName, String username){
+
+        int index = this.name.indexOf(bookName);
+
+        if(index == -1){
+            return "That book is not available";
+        }
+
+        this.name.remove(index);
+        this.author.remove(index);
+        this.year.remove(index);
+        this.lendName.set(index, username);
+
+        return "Thank you! Enjoy the book";
+    }
+
     String returnBook(String bookName, String bookAuthor,String bookYear){
 
         int index = this.name.indexOf(bookName);
@@ -64,6 +84,7 @@ public class Books extends Goods{
         this.name.add(bookName);
         this.author.add(bookAuthor);
         this.year.add(bookYear);
+        this.lendName.set(index, "");
 
         return "Thank you for returning the book";
     }

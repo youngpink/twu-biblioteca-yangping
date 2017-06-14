@@ -13,6 +13,7 @@ public class ExampleTest {
     Tools tool = new Tools();
     Books book = new Books();
     Goods movie = new Movies();
+    Accounts amy = new Users("123-1234","123","8560123");
 
     @Test
     public void testListBook() {
@@ -45,5 +46,13 @@ public class ExampleTest {
                 "钢铁侠\t乔恩\t2008\t9.5\n" +
                 "超人\t理查德\t1973\tunrating\n";
         assertEquals(expectText, movie.list());
+    }
+
+    public void tesLoginFirst() {
+        assertEquals(true, amy.login("123-1234", "123"));
+    }
+
+    public void tesLoginSecond() {
+        assertEquals(false, amy.login("123-1234", "1"));
     }
 }

@@ -24,6 +24,11 @@ public class Movies extends Goods{
         this.year.add("2008");
         this.year.add("1973");
 
+        this.lendName.add("");
+        this.lendName.add("");
+        this.lendName.add("");
+        this.lendName.add("");
+
         this.rating.add("9.5");
         this.rating.add("9.6");
         this.rating.add("9.1");
@@ -39,7 +44,7 @@ public class Movies extends Goods{
         return listString;
     }
 
-    String checkOut(String bookName){
+    String checkOut(String bookName, String username){
         int index = this.name.indexOf(bookName);
 
         if(index == -1){
@@ -49,12 +54,8 @@ public class Movies extends Goods{
         this.name.remove(index);
         this.author.remove(index);
         this.year.remove(index);
+        this.lendName.set(index, username);
 
         return "Thank you! Enjoy the movie";
     }
-
-    boolean returnBook(String bookName, String bookAuthor,String bookYear){
-        return true;
-    }
-
 }

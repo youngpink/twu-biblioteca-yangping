@@ -7,6 +7,7 @@ public class BibliotecaApp {
         Tools tool = new Tools();
         Goods book = new Books();
         Goods movie = new Movies();
+        Accounts amy = new Users("123-1234","123","8560123");
 
         tool.sayWelcome();
 
@@ -18,7 +19,12 @@ public class BibliotecaApp {
                     System.out.println(book.list());
                     break;
                 case 2:
-                    System.out.println(tool.checkOut(book));
+                    if(tool.login(amy)){
+                        System.out.println("welcome" + amy.getUsername() + "!");
+                        System.out.println(tool.checkOut(book, amy.getUsername()));
+                    }else{
+                        System.out.println("login failed!");
+                    }
                     break;
                 case 3:
                     System.out.println(tool.checkIn((Books) book));
@@ -27,7 +33,12 @@ public class BibliotecaApp {
                     System.out.println(movie.list());
                     break;
                 case 5:
-                    System.out.println(tool.checkOut(movie));
+                    if(tool.login(amy)){
+                        System.out.println("welcome" + amy.getUsername() + "!");
+                        System.out.println(tool.checkOut(movie, amy.getUsername()));
+                    }else{
+                        System.out.println("login failed!");
+                    }
                     break;
             }
             tool.mainMenu();
