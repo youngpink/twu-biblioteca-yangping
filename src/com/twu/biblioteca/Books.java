@@ -36,7 +36,21 @@ public class Books extends Goods{
     String list(){
         String listString = "";
         for (int i = 0; i < this.name.size(); i++) {
-            listString += this.name.get(i) + "\t" + this.author.get(i) + "\t" + this.year.get(i) + "\n";
+            if(this.lendName.get(i).equals("")){
+                listString += this.name.get(i) + "\t" + this.author.get(i) + "\t" + this.year.get(i) + "\n";
+            }
+        }
+
+        return listString;
+    }
+
+    String listCheckedout(ArrayList<Accounts> accounts){
+        String listString = "";
+
+        for (int i = 0; i < this.name.size(); i++) {
+            if(!this.lendName.get(i).equals("")){
+                listString += this.name.get(i) + "\t" + this.lendName.get(i) + "\t" + Accounts.findNumber(accounts, this.lendName.get(i)) + "\n";
+            }
         }
 
         return listString;
@@ -46,46 +60,37 @@ public class Books extends Goods{
 
         int index = this.name.indexOf(bookName);
 
-        if(index == -1){
-            return "That book is not available";
+        if(index != -1 && this.lendName.get(index).equals("")){
+            return "Thank you! Enjoy the book";
+
         }
 
-        this.name.remove(index);
-        this.author.remove(index);
-        this.year.remove(index);
-
-        return "Thank you! Enjoy the book";
+        return "That book is not available";
     }
 
     String checkOut(String bookName, String username){
 
         int index = this.name.indexOf(bookName);
 
-        if(index == -1){
-            return "That book is not available";
+        if(index != -1 && this.lendName.get(index).equals("")){
+            this.lendName.set(index, username);
+            return "Thank you! Enjoy the book";
         }
 
-        this.name.remove(index);
-        this.author.remove(index);
-        this.year.remove(index);
-        this.lendName.set(index, username);
-
-        return "Thank you! Enjoy the book";
+        return "That book is not available";
     }
 
-    String returnBook(String bookName, String bookAuthor,String bookYear){
+    String returnBook(String bookName){
 
         int index = this.name.indexOf(bookName);
 
-        if(index != -1){
+        if(index!=-1 && !this.lendName.get(index).equals("")){
+            this.lendName.set(index, "");
+            return "Thank you for returning the book";
+
+        }else{
             return "That is not a valid book to return";
         }
 
-        this.name.add(bookName);
-        this.author.add(bookAuthor);
-        this.year.add(bookYear);
-        this.lendName.set(index, "");
-
-        return "Thank you for returning the book";
     }
 }

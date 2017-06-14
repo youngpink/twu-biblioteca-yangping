@@ -27,7 +27,7 @@ public class Tools {
         String inputErrorAlert = "Select a valid option!";
         Scanner in = new Scanner(System.in);
         int choose = in.nextInt();
-        while(choose < 1 || choose > 6){
+        while(choose < 1 || choose > 7){
             System.out.println(inputErrorAlert);
             choose = in.nextInt();
         }
@@ -55,12 +55,6 @@ public class Tools {
         Scanner in = new Scanner(System.in);
         String bookname = in.nextLine();
 
-        System.out.println("please input book author:");
-        String bookauthor = in.nextLine();
-
-        System.out.println("please input book year:");
-        String bookyear = in.nextLine();
-
-        return book.returnBook(bookname, bookauthor, bookyear);
+        return book.returnBook(bookname);
     }
 }

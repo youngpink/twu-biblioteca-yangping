@@ -1,19 +1,23 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+
 public class BibliotecaApp {
 
     public static void main(String[] args) {
 
         Tools tool = new Tools();
-        Goods book = new Books();
+        Books book = new Books();
         Goods movie = new Movies();
-        Accounts amy = new Users("123-1234","123","8560123");
+        final Accounts amy = new Users("123-0001","123","8560001");
+        final Accounts blue = new Users("123-0002","123","8560002");
+        ArrayList<Accounts> accounts = new ArrayList<Accounts>(){{add(amy); add(blue);}};
 
         tool.sayWelcome();
 
         tool.mainMenu();
         int choose = tool.getChoose();
-        while(choose !=6){
+        while(choose !=7){
             switch(choose) {
                 case 1:
                     System.out.println(book.list());
@@ -39,6 +43,9 @@ public class BibliotecaApp {
                     }else{
                         System.out.println("login failed!");
                     }
+                    break;
+                case 6:
+                    System.out.println(book.listCheckedout(accounts));
                     break;
             }
             tool.mainMenu();

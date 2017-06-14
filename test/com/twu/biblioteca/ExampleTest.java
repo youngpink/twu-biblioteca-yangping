@@ -1,19 +1,19 @@
 package com.twu.biblioteca;
 
-
 import org.junit.Test;
-import com.twu.biblioteca.Tools;
-import com.twu.biblioteca.Books;
-
 import static org.junit.Assert.assertEquals;
-
+import java.util.ArrayList;
 
 public class ExampleTest {
 
     Tools tool = new Tools();
     Books book = new Books();
     Goods movie = new Movies();
-    Accounts amy = new Users("123-1234","123","8560123");
+    Accounts amy = new Users("123-0001","123","8560001");
+    Accounts blue = new Users("123-0002","123","8560002");
+
+    ArrayList<Accounts> accounts = new ArrayList<Accounts>(){{add(amy); add(blue);}};
+
 
     @Test
     public void testListBook() {
@@ -33,11 +33,11 @@ public class ExampleTest {
     }
 
     public void testReturnBookFirst() {
-        assertEquals("Thank you for returning the book", book.returnBook("化学","马七", "2002"));
+        assertEquals("Thank you for returning the book", book.returnBook("化学"));
     }
 
     public void testReturnBookScond() {
-        assertEquals("That is not a valid book to return",  book.returnBook("物理", "赵六", "2001"));
+        assertEquals("That is not a valid book to return",  book.returnBook("物理"));
     }
 
     public void testListMovie() {
@@ -55,4 +55,13 @@ public class ExampleTest {
     public void tesLoginSecond() {
         assertEquals(false, amy.login("123-1234", "1"));
     }
+
+    public void tesFindNumberFirst() {
+        assertEquals("8560001", Accounts.findNumber(accounts, "123-0001"));
+    }
+
+    public void tesFindNumberSecond() {
+        assertEquals("", Accounts.findNumber(accounts, "1"));
+    }
+
 }

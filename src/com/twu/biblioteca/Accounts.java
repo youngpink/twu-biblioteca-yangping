@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+
 /**
  * Created by Administrator on 2017/6/13.
  */
@@ -17,6 +19,19 @@ public class Accounts {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getPhoneNmber() {
+        return phoneNmber;
+    }
+
+    static String findNumber(ArrayList<Accounts> accounts, String username){
+        for(int i = 0; i < accounts.size(); i++){
+            if(accounts.get(i).getUsername().equals(username)){
+                return accounts.get(i).getPhoneNmber();
+            }
+        }
+        return "";
     }
 }
 
