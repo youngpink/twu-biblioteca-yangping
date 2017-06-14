@@ -10,6 +10,7 @@ public class Accounts {
     String username;
     String password;
     String phoneNmber;
+    String email;
 
     public Accounts(){}
 
@@ -23,6 +24,10 @@ public class Accounts {
 
     public String getPhoneNmber() {
         return phoneNmber;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     static String findNumber(ArrayList<Accounts> accounts, String username){

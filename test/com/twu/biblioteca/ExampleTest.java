@@ -9,8 +9,8 @@ public class ExampleTest {
     Tools tool = new Tools();
     Books book = new Books();
     Goods movie = new Movies();
-    Accounts amy = new Users("123-0001","123","8560001");
-    Accounts blue = new Users("123-0002","123","8560002");
+    Accounts amy = new Users("123-0001","123","8560001", "1@qq.com");
+    Accounts blue = new Users("123-0002","123","8560002", "1@qq.com");
 
     ArrayList<Accounts> accounts = new ArrayList<Accounts>(){{add(amy); add(blue);}};
 

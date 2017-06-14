@@ -40,7 +40,13 @@ public class Tools {
         String username = in.nextLine();
         System.out.println("please input your password:");
         String password = in.nextLine();
-        return user.login(username, password);
+        if(user.login(username, password)){
+            System.out.println(user.getUsername() + "\t" + user.getPhoneNmber() + "\t" + user.getEmail() + "\n");
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     static String checkOut(Goods good, String username){

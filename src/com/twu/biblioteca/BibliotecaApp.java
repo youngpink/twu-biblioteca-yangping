@@ -9,8 +9,8 @@ public class BibliotecaApp {
         Tools tool = new Tools();
         Books book = new Books();
         Goods movie = new Movies();
-        final Accounts amy = new Users("123-0001","123","8560001");
-        final Accounts blue = new Users("123-0002","123","8560002");
+        final Accounts amy = new Users("123-0001","123","8560001", "1@qq.com");
+        final Accounts blue = new Users("123-0002","123","8560002", "1@qq.com");
         ArrayList<Accounts> accounts = new ArrayList<Accounts>(){{add(amy); add(blue);}};
 
         tool.sayWelcome();
@@ -31,7 +31,12 @@ public class BibliotecaApp {
                     }
                     break;
                 case 3:
-                    System.out.println(tool.checkIn((Books) book));
+                    if(tool.login(amy)){
+                        System.out.println("welcome" + amy.getUsername() + "!");
+                        System.out.println(tool.checkIn((Books) book));
+                    }else{
+                        System.out.println("login failed!");
+                    }
                     break;
                 case 4:
                     System.out.println(movie.list());

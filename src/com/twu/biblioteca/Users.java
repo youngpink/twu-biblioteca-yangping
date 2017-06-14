@@ -5,13 +5,13 @@ package com.twu.biblioteca;
  */
 public class Users extends Accounts {
 
-    public Users(String username, String password, String phoneNumber){
+
+
+    public Users(String username, String password, String phoneNumber, String email){
         this.username = username;
         this.password = password;
         this.phoneNmber = phoneNumber;
+        this.email = email;
     }
-    String borrowBook(String bookname){
 
-        return "";
-    }
 }
