@@ -6,56 +6,69 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
 
-        Tools tool = new Tools();
         Books book = new Books();
-        Goods movie = new Movies();
-        final Accounts amy = new Users("123-0001","123","8560001", "1@qq.com");
-        final Accounts blue = new Users("123-0002","123","8560002", "1@qq.com");
-        ArrayList<Accounts> accounts = new ArrayList<Accounts>(){{add(amy); add(blue);}};
+        Movies movie = new Movies();
 
-        tool.sayWelcome();
+        final Accounts amy = new Accounts("123-0001", "123456", "027-12345678", "amy@gmail.com");
+        final Accounts bob = new Accounts("123-0002", "123456", "027-12345678", "bob@gmail.com");
+        final Accounts cindy = new Accounts("123-0003", "123456", "027-12345678", "cindy@gmail.com");
 
-        tool.mainMenu();
-        int choose = tool.getChoose();
+        ArrayList<Accounts> accounts = new ArrayList<Accounts>(){{add(amy);add(bob);add(cindy);}};
+
+        Tools.sayWelcome();
+        Tools.mainMenu();
+
+        int choose = Tools.getChoose();
         while(choose !=7){
             switch(choose) {
                 case 1:
-                    System.out.println(book.list());
+                    BibliotecaApp.list(book);
                     break;
                 case 2:
-                    if(tool.login(amy)){
-                        System.out.println("welcome" + amy.getUsername() + "!");
-                        System.out.println(tool.checkOut(book, amy.getUsername()));
-                    }else{
-                        System.out.println("login failed!");
-                    }
+                    BibliotecaApp.checkOutBook(accounts, book);
                     break;
                 case 3:
-                    if(tool.login(amy)){
-                        System.out.println("welcome" + amy.getUsername() + "!");
-                        System.out.println(tool.checkIn((Books) book));
-                    }else{
-                        System.out.println("login failed!");
-                    }
+                    BibliotecaApp.returnBook(accounts, book);
                     break;
                 case 4:
-                    System.out.println(movie.list());
+                    BibliotecaApp.list(movie);
                     break;
                 case 5:
-                    if(tool.login(amy)){
-                        System.out.println("welcome" + amy.getUsername() + "!");
-                        System.out.println(tool.checkOut(movie, amy.getUsername()));
-                    }else{
-                        System.out.println("login failed!");
-                    }
+                    BibliotecaApp.checkOutBook(accounts, movie);
                     break;
                 case 6:
                     System.out.println(book.listCheckedout(accounts));
                     break;
             }
-            tool.mainMenu();
-            choose = tool.getChoose();
+            Tools.mainMenu();
+            choose = Tools.getChoose();
         }
         System.exit(0);
     }
+
+    static void list(Goods good){
+        System.out.println(good.list());
+    }
+
+    static void checkOutBook(ArrayList<Accounts> accounts, Goods good){
+        Accounts user = Tools.login(accounts);
+        if(user != null){
+            System.out.println("welcome" + user.getUsername() + "!");
+            System.out.println(Tools.checkOut(good, user.getUsername()));
+        }else{
+            System.out.println("login failed!");
+        }
+    }
+
+    static void returnBook(ArrayList<Accounts> accounts, Books book){
+        Accounts user = Tools.login(accounts);
+        if(user != null){
+            System.out.println("welcome" + user.getUsername() + "!");
+            System.out.println(Tools.checkIn(book));
+        }else{
+            System.out.println("login failed!");
+        }
+    }
+
+
 }

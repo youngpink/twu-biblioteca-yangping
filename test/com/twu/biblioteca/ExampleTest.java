@@ -9,8 +9,8 @@ public class ExampleTest {
     Tools tool = new Tools();
     Books book = new Books();
     Goods movie = new Movies();
-    Accounts amy = new Users("123-0001","123","8560001", "1@qq.com");
-    Accounts blue = new Users("123-0002","123","8560002", "1@qq.com");
+    Accounts amy = new Accounts("123-0001","123","8560001", "1@qq.com");
+    Accounts blue = new Accounts("123-0002","123","8560002", "1@qq.com");
 
     ArrayList<Accounts> accounts = new ArrayList<Accounts>(){{add(amy); add(blue);}};
 
@@ -47,14 +47,14 @@ public class ExampleTest {
                 "超人\t理查德\t1973\tunrating\n";
         assertEquals(expectText, movie.list());
     }
-
-    public void tesLoginFirst() {
-        assertEquals(true, amy.login("123-1234", "123"));
-    }
-
-    public void tesLoginSecond() {
-        assertEquals(false, amy.login("123-1234", "1"));
-    }
+//
+//    public void tesLoginFirst() {
+//        assertEquals(true, amy.login("123-1234", "123"));
+//    }
+//
+//    public void tesLoginSecond() {
+//        assertEquals(false, amy.login("123-1234", "1"));
+//    }
 
     public void tesFindNumberFirst() {
         assertEquals("8560001", Accounts.findNumber(accounts, "123-0001"));

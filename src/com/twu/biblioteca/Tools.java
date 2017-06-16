@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import com.twu.biblioteca.Books;
 
@@ -7,6 +8,8 @@ import com.twu.biblioteca.Books;
  * Created by Administrator on 2017/6/10.
  */
 public class Tools {
+
+    static int optionNumber = 7;
 
     static void sayWelcome(){
         System.out.println("Welcome to Biblioteca!");
@@ -27,26 +30,26 @@ public class Tools {
         String inputErrorAlert = "Select a valid option!";
         Scanner in = new Scanner(System.in);
         int choose = in.nextInt();
-        while(choose < 1 || choose > 7){
+        while(choose < 1 || choose > optionNumber){
             System.out.println(inputErrorAlert);
             choose = in.nextInt();
         }
         return choose;
     }
 
-    static boolean login(Accounts user){
+    static Accounts login(ArrayList<Accounts> accounts){
         System.out.println("please input your username:");
         Scanner in = new Scanner(System.in);
         String username = in.nextLine();
         System.out.println("please input your password:");
         String password = in.nextLine();
-        if(user.login(username, password)){
-            System.out.println(user.getUsername() + "\t" + user.getPhoneNmber() + "\t" + user.getEmail() + "\n");
-            return true;
-        }else{
-            return false;
-        }
 
+        Accounts user = Accounts.findAccountByUsername(accounts, username);
+        if(user != null && user.login(password)){
+            System.out.println(user.userInfomation());
+            return user;
+        }
+        return null;
     }
 
     static String checkOut(Goods good, String username){
