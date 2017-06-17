@@ -52,18 +52,26 @@ public class Tools {
         return null;
     }
 
-    static String checkOut(Goods good, String username){
+    static String checkOut(Accounts user, ArrayList<Goods> goods){
         System.out.println("please input the name:");
         Scanner in = new Scanner(System.in);
         String name = in.nextLine();
-        return good.checkOut(name, username);
+        return user.checkOut(goods, name);
     }
 
-    static String checkIn(Books book){
+    static String checkIn(Accounts user, ArrayList<Goods> goods){
         System.out.println("please input book name:");
         Scanner in = new Scanner(System.in);
-        String bookname = in.nextLine();
+        String name = in.nextLine();
 
-        return book.returnBook(bookname);
+        return user.returnGoods(goods, name);
+    }
+
+    static ArrayList<Movies> downward(ArrayList<Goods> goods){
+        ArrayList<Movies> movies = new ArrayList<Movies>();
+        for(int i = 0; i < goods.size(); i++){
+            movies.add((Movies)goods.get(i));
+        }
+        return movies;
     }
 }

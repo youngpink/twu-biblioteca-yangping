@@ -12,8 +12,6 @@ public class Accounts {
     String phoneNmber;
     String email;
 
-    public Accounts(){}
-
     public Accounts(String username, String password, String phoneNmber, String email){
         this.username = username;
         this.password = password;
@@ -64,6 +62,31 @@ public class Accounts {
     static String findNumber(ArrayList<Accounts> accounts, String username){
         Accounts user = findAccountByUsername(accounts, username);
         return user != null ?  user.getPhoneNmber() : "";
+    }
+
+    String checkOut(ArrayList<Goods> goods, String name){
+
+        int index = Goods.findByName(goods, name);
+
+        if(index != -1 && goods.get(index).getLendName().equals("")){
+            goods.get(index).setLendName(this.username);
+            return "Thank you! Enjoy the book";
+        }
+
+        return "That book is not available";
+    }
+
+    String returnGoods(ArrayList<Goods> goods, String name){
+
+        int index = Goods.findByName(goods, name);
+
+        if(index!=-1 && !goods.get(index).getLendName().equals("")){
+            goods.get(index).setLendName("");
+            return "Thank you for returning the book";
+
+        }else{
+            return "That is not a valid book to return";
+        }
     }
 }
 

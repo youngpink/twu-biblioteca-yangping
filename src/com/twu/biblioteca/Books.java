@@ -7,90 +7,32 @@ import java.util.ArrayList;
 
 public class Books extends Goods{
 
-    public Books() {
-        this.name.add("语文");
-        this.name.add("数学");
-        this.name.add("英语");
-        this.name.add("物理");
-
-        this.author.add("张三");
-        this.author.add("李四");
-        this.author.add("王五");
-        this.author.add("赵六");
-
-        this.year.add("1990");
-        this.year.add("1966");
-        this.year.add("1998");
-        this.year.add("2001");
-
-        this.lendName.add("");
-        this.lendName.add("");
-        this.lendName.add("");
-        this.lendName.add("");
+    public Books(String name, String author, String year) {
+        this.name = name;
+        this.author = author;
+        this.year = year;
     }
 
-    protected Books(int x){
-
-    }
-
-    String list(){
+    static String list(ArrayList<Goods> books){
         String listString = "";
-        for (int i = 0; i < this.name.size(); i++) {
-            if(this.lendName.get(i).equals("")){
-                listString += this.name.get(i) + "\t" + this.author.get(i) + "\t" + this.year.get(i) + "\n";
+        for (int i = 0; i < books.size(); i++) {
+            if(books.get(i).getLendName().equals("")){
+                listString += books.get(i).getName() + "\t" + books.get(i).getAuthor() + "\t" + books.get(i).getYear() + "\n";
             }
         }
 
         return listString;
     }
 
-    String listCheckedout(ArrayList<Accounts> accounts){
+    static String listCheckedout(ArrayList<Goods> books, String phoneNumber){
         String listString = "";
 
-        for (int i = 0; i < this.name.size(); i++) {
-            if(!this.lendName.get(i).equals("")){
-                listString += this.name.get(i) + "\t" + this.lendName.get(i) + "\t" + Accounts.findNumber(accounts, this.lendName.get(i)) + "\n";
+        for (int i = 0; i < books.size(); i++) {
+            if(!books.get(i).getLendName().equals("")){
+                listString += books.get(i).getName() + "\t" + books.get(i).getLendName() + "\t" + phoneNumber + "\n";
             }
         }
 
         return listString;
-    }
-
-    String checkOut(String bookName){
-
-        int index = this.name.indexOf(bookName);
-
-        if(index != -1 && this.lendName.get(index).equals("")){
-            return "Thank you! Enjoy the book";
-
-        }
-
-        return "That book is not available";
-    }
-
-    String checkOut(String bookName, String username){
-
-        int index = this.name.indexOf(bookName);
-
-        if(index != -1 && this.lendName.get(index).equals("")){
-            this.lendName.set(index, username);
-            return "Thank you! Enjoy the book";
-        }
-
-        return "That book is not available";
-    }
-
-    String returnBook(String bookName){
-
-        int index = this.name.indexOf(bookName);
-
-        if(index!=-1 && !this.lendName.get(index).equals("")){
-            this.lendName.set(index, "");
-            return "Thank you for returning the book";
-
-        }else{
-            return "That is not a valid book to return";
-        }
-
     }
 }

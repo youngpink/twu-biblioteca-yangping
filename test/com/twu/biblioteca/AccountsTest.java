@@ -15,6 +15,12 @@ public class AccountsTest {
 
     ArrayList<Accounts> accounts = new ArrayList<Accounts>(){{add(amy);add(bob);add(cindy);}};
 
+    ArrayList<Goods> books = new ArrayList<Goods>(){{
+        add(new Books("chinese", "an", "1980"));
+        add(new Books("math", "blue", "1990"));
+        add(new Books("english", "may", "2010"));
+    }};
+
     @Test
     public void testGetters(){
         assertEquals("123-0001", amy.getUsername());
@@ -71,5 +77,34 @@ public class AccountsTest {
     @Test
     public void testLoginIndeviallWithFalsePassword(){
         assertEquals(false, amy.login("123"));
+    }
+
+    @Test
+    public void testCheckOutWithExistBook(){
+
+        assertEquals("Thank you! Enjoy the book", amy.checkOut(books, "math"));
+    }
+
+    @Test
+    public void testCheckOutWithNotExistBook(){
+
+        assertEquals("That book is not available", amy.checkOut(books, "logic"));
+    }
+
+    @Test
+    public void testReturnBookWithCheckedOutBook(){
+
+        amy.checkOut(books, "math");
+        assertEquals("Thank you for returning the book", amy.returnGoods(books, "math"));
+    }
+
+    @Test
+    public void testReturnBookWithNotCheckedOutBook(){
+        assertEquals("That is not a valid book to return", amy.returnGoods(books, "mathc"));
+    }
+
+    @Test
+    public void testReturnBookWithNoExistBook(){
+        assertEquals("That is not a valid book to return", amy.returnGoods(books, "logic"));
     }
 }

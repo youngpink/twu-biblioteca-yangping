@@ -6,56 +6,26 @@ import java.util.ArrayList;
  * Created by Administrator on 2017/6/13.
  */
 public class Movies extends Goods{
-    private ArrayList<String> rating = new ArrayList<String>();
 
-    public Movies() {
-        this.name.add("蝙蝠侠");
-        this.name.add("蜘蛛侠");
-        this.name.add("钢铁侠");
-        this.name.add("超人");
+    String rating;
 
-        this.author.add("蒂姆");
-        this.author.add("斯瓦克汉默");
-        this.author.add("乔恩");
-        this.author.add("理查德");
-
-        this.year.add("1943");
-        this.year.add("2002");
-        this.year.add("2008");
-        this.year.add("1973");
-
-        this.lendName.add("");
-        this.lendName.add("");
-        this.lendName.add("");
-        this.lendName.add("");
-
-        this.rating.add("9.5");
-        this.rating.add("9.6");
-        this.rating.add("9.1");
-        this.rating.add("unrating");
+    public Movies(String name, String author, String year, String rating) {
+        this.name = name;
+        this.author = author;
+        this.year = year;
+        this.rating = rating;
     }
 
-    String list(){
+    public String getRating() {
+        return rating;
+    }
+
+    static String list(ArrayList<Movies> goods){
         String listString = "";
-        for (int i = 0; i < this.name.size(); i++) {
-            listString += this.name.get(i) + "\t" + this.author.get(i) + "\t" + this.year.get(i) + "\t" + this.rating.get(i) + "\n";
+        for (int i = 0; i < goods.size(); i++) {
+            listString += goods.get(i).getName() + "\t" + goods.get(i).getAuthor() + "\t" + goods.get(i).getYear() + "\t" + goods.get(i).getRating() + "\n";
         }
 
         return listString;
-    }
-
-    String checkOut(String bookName, String username){
-        int index = this.name.indexOf(bookName);
-
-        if(index == -1){
-            return "That movie is not available";
-        }
-
-        this.name.remove(index);
-        this.author.remove(index);
-        this.year.remove(index);
-        this.lendName.set(index, username);
-
-        return "Thank you! Enjoy the movie";
     }
 }
